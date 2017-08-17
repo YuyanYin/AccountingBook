@@ -1,4 +1,11 @@
-﻿@model IEnumerable<AccountingBook.Models.ViewModels.AccountingViewModel>
+﻿@using System.Web.Mvc;
+@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<AccountingBook.Models.ViewModels.AccountingViewModel>
+@section styles
+{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
 
 <table class="table">
     <tr>
@@ -32,3 +39,5 @@
         seq++;
     }
 </table>
+
+@Html.PagedListPager(Model,Page=>Url.Action("Detail",new { Page }))
